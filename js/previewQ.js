@@ -1,7 +1,7 @@
-// history.pushState(null, null, location.href);
-// window.onpopstate = function () {
-//     history.go(1);
-// };
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+     history.go(1);
+ };
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -82,3 +82,4 @@ document.querySelector("#wrong-questions").appendChild(container);
 function goHome() {
   window.location.href = "home.html";
 }
+
