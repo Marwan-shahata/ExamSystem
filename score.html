@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExamyFlow-Score</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+      <link rel="icon" type="image/x-icon" href="/assets/pic/logo2d.png">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+
+  <body
+    class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 min-h-screen transition-colors duration-500 overflow-x-hidden"
+  >
+    <header
+      class="bg-[#5046e5] dark:bg-slate-800 text-white shadow-md flex flex-wrap justify-between items-center px-4 sm:px-8 py-4"
+    >
+      <div class="flex items-center gap-3 flex-1 min-w-0">
+        <img
+          src="/assets/pic/logoo.png"
+          alt="Logo"
+          class="w-12 sm:w-14 md:w-20 h-auto object-contain"
+        />
+        <div class="flex flex-col truncate">
+          <span class="font-bold text-lg sm:text-2xl tracking-tight truncate">
+            ExamyFlow
+          </span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 sm:gap-5 mt-2 sm:mt-0">
+        <button
+          id="themeToggle"
+          class="p-2 rounded-full bg-gray-200 dark:bg-slate-700 text-yellow-500 dark:text-white transition duration-300"
+        >
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+
+        <div class="relative inline-block">
+          <div
+            id="avatarButton"
+            class="bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center border-2 border-gray-600 cursor-pointer"
+          >
+            MM
+          </div>
+
+          <div
+            id="avatarDropdown"
+            class="hidden absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 rounded-md shadow-lg z-50"
+          >
+            <p
+              id="StudentName"
+              class="px-4 py-2 text-sm text-gray-900 dark:text-gray-100 truncate"
+            >
+              Marwan Mohamed
+            </p>
+            <p
+              id="studentid"
+              class="px-4 py-1 text-xs text-gray-500 dark:text-gray-400 truncate"
+            >
+              Student #1
+            </p>
+            <hr class="border-gray-200 dark:border-gray-700 my-1" />
+            <button
+              id="logout_btn"
+              class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="flex justify-center px-4 py-10">
+      <div class="w-full max-w-4xl">
+        <div
+          class="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden transition-colors duration-500"
+        >
+          <!-- Header -->
+          <div
+            id="resultHeader"
+            class="px-6 sm:px-10 py-10 sm:py-10 text-center"
+          >
+            <h1
+              id="resultTitle"
+              class="text-3xl sm:text-5xl font-bold mb-2 sm:mb-3 text-gray-900 dark:text-white"
+            ></h1>
+            <p
+              id="resultSubtitle"
+              class="text-base sm:text-xl text-gray-700 dark:text-gray-300 opacity-90"
+            ></p>
+          </div>
+
+          <!-- Score Circle -->
+          <div class="p-8 sm:p-14 text-center">
+            <div
+              class="w-56 h-56 sm:w-72 sm:h-72 rounded-full mx-auto mb-8 sm:mb-10 flex items-center justify-center shadow-xl"
+            >
+              <div
+                class="w-48 h-48 sm:w-64 sm:h-64 bg-white dark:bg-gray-700 rounded-full flex flex-col items-center justify-center transition-colors duration-500"
+              >
+                <div
+                  id="scoreValue"
+                  class="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white"
+                >
+                  0
+                </div>
+                <div
+                  class="text-xs sm:text-sm text-gray-900 dark:text-gray-300 uppercase mt-2 sm:mt-3"
+                >
+                  Percentage
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats -->
+            <div
+              class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10 text-lg text-center"
+            >
+              <div>
+                <div id="totalQuestions" class="text-2xl font-bold">0</div>
+                <div class="text-sm text-gray-600 dark:text-gray-400">
+                  Total
+                </div>
+              </div>
+
+              <div>
+                <div id="correctAnswers" class="text-2xl font-bold">0</div>
+                <div class="text-sm text-gray-600 dark:text-gray-400">
+                  Correct
+                </div>
+              </div>
+
+              <div>
+                <div id="wrongAnswers" class="text-2xl font-bold">0</div>
+                <div class="text-sm text-gray-600 dark:text-gray-400">
+                  Wrong
+                </div>
+              </div>
+            </div>
+
+            <p
+              id="timeSpent"
+              class="mb-6 font-semibold text-base sm:text-lg"
+            ></p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+              <button
+                onclick="window.location = 'home.html'"
+                class="px-6 py-2 sm:px-8 sm:py-3 rounded-full bg-indigo-600 dark:bg-indigo-500 text-white hover:bg-indigo-700 dark:hover:bg-indigo-600 transition"
+              >
+                Back to Home
+              </button>
+              <button
+                onclick="showQuestions()"
+                class="px-6 py-2 sm:px-8 sm:py-3 rounded-full bg-green-600 dark:bg-green-500 text-white hover:bg-green-700 dark:hover:bg-green-600 transition"
+              >
+                View Questions
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/darkmood.js"></script>
+    <script src="js/score.js"></script>
+  </body>
+</html>

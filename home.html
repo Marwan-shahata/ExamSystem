@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+        <link rel="icon" type="image/x-icon" href="/assets/pic/logo2d.png">
+
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+    <title>ExamyFlow-Home</title>
+  </head>
+  <body
+    class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 min-h-screen font-sans antialiased"
+  >
+    <header
+      class="bg-[#5046e5] dark:bg-slate-800 text-white p-4 shadow-md flex flex-wrap justify-between items-center px-4 sm:px-8"
+    >
+      <div class="flex items-center gap-3 flex-1 min-w-0">
+        <div class="flex-shrink-0">
+          <img
+            src="/assets/pic/logoo.png"
+            alt="Logo"
+            class="w-12 sm:w-14 md:w-20 h-auto object-contain"
+          />
+        </div>
+        <div class="flex flex-col truncate">
+          <span class="font-bold text-lg sm:text-2xl tracking-tight truncate"
+            >ExamyFlow</span
+          >
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 sm:gap-5 mt-2 sm:mt-0">
+        <button
+          id="themeToggle"
+          class="p-2 rounded-full bg-gray-200 dark:bg-slate-700 text-yellow-500 dark:text-white transition duration-300"
+        >
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- User Avatar as Burger Menu -->
+        <div class="relative inline-block">
+          <!-- Avatar Button -->
+          <div
+            id="avatarButton"
+            class="bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center border-2 border-gray-600 cursor-pointer"
+          >
+            MM
+          </div>
+
+          <!-- Dropdown Menu -->
+          <div
+            id="avatarDropdown"
+            class="hidden absolute right-0 mt-2 w-28 bg-white dark:bg-gray-800 rounded-md shadow-lg z-50"
+          >
+            <p
+              id="StudentName"
+              class="px-4 py-2 text-sm text-gray-900 dark:text-gray-100 truncate"
+            >
+              Marwan Mohamed
+            </p>
+            <p
+              id="studentid"
+              class="px-4 py-1 text-xs text-gray-500 dark:text-gray-400 truncate"
+            >
+              Student #1
+            </p>
+            <hr class="border-gray-200 dark:border-gray-700 my-1" />
+            <button
+              id="logout_btn"
+              class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main
+      class="max-w-8xl mx-auto px-6 sm:px-8 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white dark:bg-gray-900 transition-colors duration-300"
+    >
+      <!-- Left Content -->
+      <div class="space-y-6 order-2 lg:order-1">
+  <h1
+    class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white leading-[1.1]"
+    id="student-name"
+  >
+    Welcome, Student!
+  </h1>
+
+  <p
+    class="text-gray-600 dark:text-gray-300 text-xl max-w-md leading-relaxed"
+  >
+    Get ready to take your exam easily, securely, and confidently.  
+    <br>
+    <strong >Important Instructions:</strong>
+    <ul class="list-disc pl-5 mt-1">
+      <li>Stay focused and complete the exam in this tab only.</li>
+      <li>Do not switch tabs or use any external help.</li>
+      <li>Any attempt to cheat will be detected and may lead to auto sumbitting.</li>
+    </ul>
+  </p>
+
+  <div class="pt-4">
+    <button
+      id="BTn-star"
+      class="bg-[#5046e5] dark:bg-indigo-500 text-white px-10 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 dark:hover:bg-indigo-600 transition shadow-lg"
+    >
+      Start Exam
+    </button>
+  </div>
+</div>
+
+      <!-- Right Image -->
+      <div class="flex justify-center order-1 lg:order-2">
+        <div class="relative w-full max-w-2xl">
+          <img
+            src="/assets/pic/landingPhoto.png"
+            alt="Student studying"
+            class="w-full h-auto relative z-10 rounded-xl"
+          />
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal -->
+    <dialog id="my_modal_5" class="modal modal-middle">
+      <div
+        class="modal-box bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-2xl shadow-xl transition-colors duration-300"
+      >
+        <h3 class="mb-4 text-xl font-bold text-center">Exam Details</h3>
+
+        <div class="text-left mb-6 space-y-2">
+          <p><strong>Subject :</strong> JavaScript</p>
+          <p><strong>Duration :</strong> 10 minutes</p>
+          <p><strong>Number of Questions :</strong> 10 questions</p>
+          <p><strong>Passing Marks :</strong> 50 marks</p>
+
+          <div class="modal-action flex justify-between pt-4">
+            <button
+              id="cancelExam"
+              class="w-1/3 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] transition"
+            >
+              Cancel
+            </button>
+
+            <button
+              id="confirmStartExam"
+              class="w-1/3 bg-[#4bae4f] text-white px-4 py-2 rounded-full hover:bg-[#307133] transition"
+            >
+              Start
+            </button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="my_modal_4" class="modal modal-middle">
+      <div
+        class="modal-box bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-2xl shadow-xl transition-colors duration-300"
+      >
+        <h3 class="mb-4 text-xl font-bold text-center">
+          Detail Of Submitting Exam
+        </h3>
+
+        <div class="text-left mb-6 space-y-2">
+          <p><strong>✅ Exam is taken !!</strong></p>
+          <p id="date-ofsub" class="text-center font-bold text-red-600">
+            <strong></strong>
+          </p>
+
+          <div class="modal-action flex justify-between pt-4">
+            <button
+              id="cancel1Exam"
+              class="w-1/3 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] transition"
+            >
+              Cancel
+            </button>
+
+            <button
+              id="ResultExam"
+              class="w-1/3 bg-[#4bae4f] text-white px-4 py-2 rounded-full hover:bg-[#307133] transition"
+            >
+              Result
+            </button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="/js/darkmood.js"></script>
+
+    <script src="/js/home.js"></script>
+  </body>
+</html>

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Examyflow-Exam Interface</title>
+
+    <!-- Tailwand -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+
+    <link rel="icon" type="image/x-icon" href="/assets/pic/logo2d.png">
+
+
+    <style>
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+      }
+      
+    </style>
+  </head>
+  <!-- Toast / Notification Modal -->
+<div id="toast-container" class="fixed inset-0 flex items-center justify-center z-50 pointer-events-none"></div>
+<!-- ================== Sounds ================== -->
+<audio id="sound-submit" src="/assets/sounds/submit.mp3"></audio>
+<audio id="sound-warning" src="/assets/sounds/warning.mp3"></audio>
+<audio id="sound-cheat" src="/assets/sounds/cheat.mp3"></audio>
+<audio id="sound-timeup" src="/assets/sounds/timeup.mp3"></audio>
+
+  <body
+    class="bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-200 min-h-screen flex flex-col transition-colors duration-300"
+  >
+    <header
+      class="bg-[#5046e5] dark:bg-slate-800 text-white p-4 shadow-md flex flex-wrap justify-between items-center px-4 sm:px-8"
+    >
+    
+      <div class="flex items-center gap-3 flex-1 min-w-0">
+        <div class="flex-shrink-0">
+          <img
+            src="/assets/pic/logoo.png"
+            alt="Logo"
+            class="w-12 sm:w-14 md:w-20 h-auto object-contain"
+          />
+        </div>
+        <div class="flex flex-col truncate">
+          <span class="font-bold text-lg sm:text-2xl tracking-tight truncate"
+            >ExamyFlow</span
+          >
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 sm:gap-5 mt-2 sm:mt-0">
+       <button
+          id="themeToggle"
+          class="p-2 rounded-full bg-gray-200 dark:bg-slate-700 text-yellow-500 dark:text-white transition duration-300"
+        >
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+          <!-- User Avatar as Burger Menu -->
+      <div class="relative inline-block">
+        <!-- Avatar Button -->
+        <div
+          id="avatarButton"
+          class="bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center border-2 border-gray-600 cursor-pointer"
+        >
+          MM
+        </div>
+
+        <!-- Dropdown Menu -->
+        <div
+          id="avatarDropdown"
+          class="hidden absolute right-0 mt-2 w-28 bg-white dark:bg-gray-800 rounded-md shadow-lg z-50"
+        >
+          <p id="StudentName" class="px-4 py-2 text-sm text-gray-900 dark:text-gray-100 truncate">
+            Marwan Mohamed
+          </p>
+          <p 
+          id="studentid"
+          class="px-4 py-1 text-xs text-gray-500 dark:text-gray-400 truncate">
+            Student #1
+          </p>
+          <hr class="border-gray-200 dark:border-gray-700 my-1">
+          <button
+          id="logbtnhome"
+            class="  block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
+          >
+            Home
+          </button>
+        </div>
+      </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto w-full mt-7 px-4 sm:px-6 md:px-10">
+      <!-- Timer -->
+      <div class="flex justify-center lg:justify-end mb-6">
+        <div
+          class="bg-[#e3e9f1] dark:bg-slate-800 px-4 py-2 rounded-lg flex items-end space-x-2 w-full sm:w-72 justify-center transition"
+        >
+          <svg
+            id="alarmicon"
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+          <span class="text-lg font-mono" id="timer"></span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 lg:gap-10">
+        <div
+          class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8 min-h-[400px] flex flex-col transition"
+        >
+          <div class="flex justify-between items-center mb-6">
+            <span
+              id="question-number-label"
+              class="text-indigo-600 dark:text-indigo-400 font-semibold"
+              >Question 1 of 15</span
+            >
+            <button id="flag-btn" class="text-orange-500 hover:underline">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <h2 id="question-text" class="text-xl sm:text-2xl font-semibold mb-8">
+            Loading question...
+          </h2>
+          <div id="options-container" class="space-y-3 flex-grow"></div>
+
+          <div
+            class="flex justify-between mt-6 pt-6 border-t border-slate-100 dark:border-slate-700"
+          >
+            <button
+              id="prev-btn"
+              class="px-6 py-2 rounded-lg bg-slate-100 dark:bg-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition"
+            >
+              ← Previous
+            </button>
+            <button
+              id="next-btn"
+              class="px-8 py-2 rounded-lg bg-[#5c67f2] hover:bg-[#4a54d4] text-white transition shadow-lg"
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+
+        <aside class="space-y-4">
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 transition"
+          >
+            <h3
+              class="text-xs font-bold text-slate-400 dark:text-slate-300 uppercase tracking-widest mb-4"
+            >
+              Question Map
+            </h3>
+            <div id="question-map" class="grid grid-cols-5 gap-2"></div>
+                    <div class="mt-6 space-y-2 text-[11px] font-medium text-slate-500">
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 bg-emerald-500 rounded"></div>
+            Answered
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 bg-slate-200 rounded"></div>
+            Unanswered
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 bg-orange-400 rounded"></div>
+            Flagged for Review
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 bg-indigo-600 rounded"></div>
+            Current Question
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-dashed border-slate-200 dark:border-slate-700 p-6 transition"
+      >
+        <p class="font-medium mb-4">Ready to finalize your attempt?</p>
+        <button
+          id="submit-exam"
+          class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-lg transition shadow-md"
+        >
+          SUBMIT EXAM
+        </button>
+      </div>
+          </div>
+
+        </aside>
+      </div>
+    </main>
+
+        <script src="/js/darkmood.js"></script>
+
+    <script src="/js/exam.js"></script>
+  </body>
+</html>

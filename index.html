@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExamyFlow-landing</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="/assets/pic/logo2d.png">
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
+        <link rel="icon" type="image/x-icon" href="/assets/pic/logo2d.png">
+
+
+    <style>
+      /* Hero Text Animation */
+      @keyframes slideFadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-slideFadeIn {
+        animation: slideFadeIn 1s ease forwards;
+      }
+      .animate-slideFadeIn-delay {
+        animation: slideFadeIn 1s ease 0.5s forwards;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-white dark:bg-slate-900 text-gray-900 dark:text-white transition-colors duration-500"
+  >
+    <!-- Navbar -->
+    <nav
+      class="bg-[#5046e5] dark:bg-slate-800 text-white shadow-md flex flex-wrap justify-between items-center py-2 px-4 sm:px-6"
+    >
+      <!-- Logo Section -->
+      <div class="flex items-center gap-2 flex-1 min-w-0">
+        <div class="flex-shrink-0">
+          <img
+            src="/assets/pic/logoo.png"
+            alt="Logo"
+            class="w-12 sm:w-14 md:w-16 h-auto object-contain"
+          />
+        </div>
+        <div class="flex flex-col truncate">
+          <span class="font-bold text-base sm:text-xl tracking-tight truncate"
+            >ExamyFlow</span
+          >
+        </div>
+      </div>
+
+      <!-- Buttons Section -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        <!-- Dark Mode Toggle -->
+        <button
+          id="themeToggle"
+          class="p-2 rounded-full bg-gray-200 dark:bg-slate-700 text-yellow-500 dark:text-white transition duration-300"
+        >
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- Login Button -->
+        <a
+          href="login.html"
+          class="bg-indigo-400 dark:bg-indigo-600 text-black dark:text-white px-4 sm:px-5 py-1.5 rounded-xl font-semibold hover:scale-105 transition"
+        >
+          Login
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="flex flex-col items-center justify-center text-center px-6 mt-20 md:mt-32"
+    >
+      <h2
+        class="text-6xl md:text-7xl font-extrabold leading-tight animate-slideFadeIn text-gray-900 dark:text-white"
+      >
+        Smart Online
+        <span class="text-[#5046e5] dark:text-indigo-300">ExamyFlow</span>
+      </h2>
+      <p
+        class="mt-6 text-xl md:text-2xl max-w-3xl text-gray-700 dark:text-gray-300 animate-slideFadeIn-delay"
+      >
+        A powerful and secure platform to manage online exams, track student
+        performance, and prevent cheating with advanced monitoring tools.
+      </p>
+      <div
+        class="mt-12 flex gap-6 flex-wrap justify-center animate-slideFadeIn-delay"
+      >
+        <a
+          href="login.html"
+          class="bg-indigo-400 dark:bg-indigo-600 text-black dark:text-white font-bold px-10 py-5 rounded-2xl shadow-xl hover:scale-110 transition duration-300"
+        >
+          Get Started
+        </a>
+        <a
+          href="#features"
+          class="border-2 border-gray-900 dark:border-gray-200 px-10 py-5 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition duration-300"
+        >
+          Learn More
+        </a>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="mt-32 px-6 pb-20">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        <div
+          class="bg-gray-100 dark:bg-gray-800 p-8 rounded-3xl shadow-xl hover:scale-105 transition"
+        >
+          <h3 class="text-2xl font-bold mb-4">Secure Exams</h3>
+          <p class="text-gray-700 dark:text-gray-300">
+            Anti-cheating detection, tab switching monitoring and real-time
+            tracking.
+          </p>
+        </div>
+        <div
+          class="bg-gray-100 dark:bg-gray-800 p-8 rounded-3xl shadow-xl hover:scale-105 transition"
+        >
+          <h3 class="text-2xl font-bold mb-4">Instant Results</h3>
+          <p class="text-gray-700 dark:text-gray-300">
+            Automatic grading system with detailed analytics and feedback.
+          </p>
+        </div>
+        <div
+          class="bg-gray-100 dark:bg-gray-800 p-8 rounded-3xl shadow-xl hover:scale-105 transition"
+        >
+          <h3 class="text-2xl font-bold mb-4">Modern Dashboard</h3>
+          <p class="text-gray-700 dark:text-gray-300">
+            Clean UI with dark mode support and responsive design.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-gray-500 dark:text-gray-400">
+      © 2026 ExamyFlow. All Rights Reserved Marwan Mohamed & Mina Magdy.
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/darkmood.js"></script>
+  </body>
+</html>
