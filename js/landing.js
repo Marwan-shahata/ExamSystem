@@ -1,6 +1,7 @@
-history.pushState(null, null, location.href);
-window.onpopstate = function () {
-    history.go(1);
+window.onload = function () {
+  history.pushState(null, null, location.href);
+
+  window.addEventListener("popstate", function () {
+    history.pushState(null, null, location.href);
+  });
 };
-
-
